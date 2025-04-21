@@ -143,11 +143,17 @@ function aufg03(N)
             push!(hs, h)
         end
     
-        # Log-Log-Plot erstellen
+        # Konvergenzordnung (lineare Regression im log-log-Raum)
+        slope = sum(log.(hs) .* log.(errors)) - sum(log.(hs)) * sum(log.(errors)) / length(hs)
+        slope /= sum(log.(hs).^2) - (sum(log.(hs))^2) / length(hs)
+        slope = round(slope, digits=2)
+
+        # Plot ohne Referenzgerade
         p = plot(hs, errors, xscale=:log10, yscale=:log10,
             xlabel="h", ylabel="Fehler",
             title="Konvergenztest – Methode: $methode",
-            label="Fehler", lw=2, marker=:circle)
+            label="Fehler (Ordnung ≈ $slope)",
+            legend=:bottomright)
 
         savefig(p, string("output/konvergenz_", methode, ".pdf"))
     end

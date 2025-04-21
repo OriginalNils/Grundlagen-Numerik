@@ -14,11 +14,20 @@ Die 1-Norm und ∞-Norm wachsen ähnlich, wobei die 1-Norm tendenziell etwas sch
 
 ---
 
+## Aufgabe 03
+
+Alle Teilaufgaben wurden in der Funktion `aufg03()` verankert und werden durch ausführen dieser Funktion ausgeführt. Die Plots werden alle in dem `output` Ordner gespeichert und können dort eingesehen werden.
+
+Zu vii: Man kann die Ordnung des Fehlers im log-log-Plot ablesen, in dem man die Steigung betrachtet. In den Plots ist die Steigung in der Legende zu sehen. Man erkennt, dass wie in der Vorlesung und im Übungsblatt errechnet wurde, dass zentralen Differenzen eine Fehler von O(h^2) haben und Vorwärts und Rückwärts Differenzen eine Fehler von O(h) haben.
+
+---
+
 ## Voraussetzungen
 
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
   - `Printf` (für formatierte Ausgaben)
+  - `Plots` (für Diagramme)
 
 ---
 
