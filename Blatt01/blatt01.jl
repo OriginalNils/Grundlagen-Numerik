@@ -115,7 +115,7 @@ function aufg03(N)
         plot!(p, x[2:N+1], f_prime_exact_values, label="Exakte Ableitung", linestyle=:dash, lw=2)
 
         # Plot speichern
-        savefig(string(name, "_ableitung_", method, ".pdf"))
+        savefig(string("output/", name, "_ableitung_", method, ".pdf"))
     end
 
     function konvergenztest(f, f_prime_exact; methode="central", Ns=10 .^ (1:4))
@@ -145,16 +145,11 @@ function aufg03(N)
     
         # Log-Log-Plot erstellen
         p = plot(hs, errors, xscale=:log10, yscale=:log10,
-            xlabel="h", ylabel="Fehler", marker=:o,
-            title="Konvergenztest – Methode: $methode", label="Fehler", legend=:bottomright)
+            xlabel="h", ylabel="Fehler",
+            title="Konvergenztest – Methode: $methode",
+            label="Fehler", lw=2, marker=:circle)
 
-        # Referenzgerade (O(h) oder O(h²)) für Vergleich
-        order = methode == "central" ? 2 : 1
-        slope_ref = hs .^ order
-        plot!(p, hs, slope_ref .* errors[1]/slope_ref[1], linestyle=:dash, label="O(h^$order)")
-
-        # 📄 PDF speichern
-        savefig(p, string("konvergenz_", methode, ".pdf"))
+        savefig(p, string("output/konvergenz_", methode, ".pdf"))
     end
     
 
