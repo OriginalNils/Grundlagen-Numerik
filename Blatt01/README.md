@@ -43,7 +43,7 @@ Zu vii: Man kann die Ordnung des Fehlers im log-log-Plot ablesen, in dem man die
 ```
 include("blatt01.jl")
 ```
-3. Der Code der jeweiligen Aufgaben kann jeweils mit folgenden Befehl ausgeführt werden, wobei für x die jeweilige Aufgaben Nummer genutzt werden muss.
+3. Der Code der jeweiligen Aufgaben kann jeweils mit folgenden Befehl ausgeführt werden, wobei für x die jeweilige Aufgaben Nummer genutzt werden muss. Weitere Infos bzgl zu übergebenden Werten ist in den jeweiligen Aufgaben oben beschrieben.
 ```
 aufg0x()
 ```
