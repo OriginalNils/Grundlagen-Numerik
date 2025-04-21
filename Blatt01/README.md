@@ -12,11 +12,13 @@ Die 1-Norm und ∞-Norm wachsen ähnlich, wobei die 1-Norm tendenziell etwas sch
 
 ## Aufgabe 02
 
+Durch ausführen von `aufg02(S)` wird eine Tabelle zurückgegeben für gegebenes S. Man kann beobachten das die Folge recht schnell gegen Wurzel S konvergiert, denn bereits nach 5 Schritten sind alle Testwerte bereits im Bereich von 10^-2. Außerdem fällt auf, dass mit Startwerten nahe Wurzel S konvergieren offensichtlich schneller. Außerdem erkennt man eine Symmetrie zwischen 0.5 und 1 als Startwert. Nach 10 Schritten sind bereits alle Startwerte nahe Maschinengenauigkeit an Wurzel S heran, also 10^-16.
+
 ---
 
 ## Aufgabe 03
 
-Alle Teilaufgaben wurden in der Funktion `aufg03()` verankert und werden durch ausführen dieser Funktion ausgeführt. Die Plots werden alle in dem `output` Ordner gespeichert und können dort eingesehen werden.
+Alle Teilaufgaben wurden in der Funktion `aufg03(N)` verankert und werden durch ausführen dieser Funktion ausgeführt, wobei ein N gegeben werden muss, also die Anzahl an Unterteilung des Intervalls. Die Plots werden alle in dem `output` Ordner gespeichert und können dort eingesehen werden.
 
 Zu vii: Man kann die Ordnung des Fehlers im log-log-Plot ablesen, in dem man die Steigung betrachtet. In den Plots ist die Steigung in der Legende zu sehen. Man erkennt, dass wie in der Vorlesung und im Übungsblatt errechnet wurde, dass zentralen Differenzen eine Fehler von O(h^2) haben und Vorwärts und Rückwärts Differenzen eine Fehler von O(h) haben.
 
@@ -28,6 +30,7 @@ Zu vii: Man kann die Ordnung des Fehlers im log-log-Plot ablesen, in dem man die
 - Standard-Bibliotheken:
   - `Printf` (für formatierte Ausgaben)
   - `Plots` (für Diagramme)
+  - `PrettyTables` (für Tabellen)
 
 ---
 

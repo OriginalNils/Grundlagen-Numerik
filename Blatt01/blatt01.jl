@@ -25,17 +25,20 @@ function aufg01()
         end
         return H
     end
-    
-    # Normberechnung für n = 1 bis 10:
-    println(" n │    ‖H‖1    │   ‖H‖∞     │   ‖H‖F")
-    println("───┼────────────┼────────────┼────────────")
+
+    # Datenmatrix vorbereiten:
+    data = Matrix{Float64}(undef, 10, 4)
+
     for n in 1:10
         H = matrix_h(n)
-        n1 = norm_1(H)
-        ninf = norm_inf(H)
-        nfrob = norm_f(H)
-        @printf("%2d │ %10.6f │ %10.6f │ %10.6f\n", n, n1, ninf, nfrob)
+        data[n, 1] = n
+        data[n, 2] = norm_1(H)
+        data[n, 3] = norm_inf(H)
+        data[n, 4] = norm_f(H)
     end
+    
+    header = ["n", "‖H‖₁", "‖H‖∞", "‖H‖F"]
+    pretty_table(data; header = (header,), title = "Normen der Hilbert-Matrix für n = 1 bis 10")
 end
 
 function aufg02(S)
@@ -50,22 +53,21 @@ function aufg02(S)
 
     # Funktion zur Konvergenzanalyse
     function teste_konvergenz(S::Float64, x0_values::Vector{Float64}, n_values::Vector{Int})
-        table_data = []  # Leere Liste für die Tabellendaten
-    
-        for x0 in x0_values
-            row = [@sprintf("%.4f", x0)]  # Startwert x0 als String mit 4 Dezimalstellen
-            for n in n_values
-                xn = nth_elem(x0, S, n)  # Berechnung des n-ten Folgengliedes
-                fehler = abs(xn - sqrt(S))  # Fehlerberechnung
-                push!(row, @sprintf("%.6f", fehler))  # Fehler in der Zeile hinzufügen
+        num_rows = length(x0_values)
+        num_cols = length(n_values) + 1  # +1 für x₀
+        table_data = zeros(Float64, num_rows, num_cols)
+
+        for (i, x0) in enumerate(x0_values)
+            table_data[i, 1] = x0  # Erste Spalte = x₀
+            for (j, n) in enumerate(n_values)
+                xn = nth_elem(x0, S, n)
+                fehler = abs(xn - sqrt(S))
+                table_data[i, j + 1] = fehler
             end
-            push!(table_data, row)  # Zeile zur Tabelle hinzufügen
         end
 
-        # Header zusammenstellen: ["x₀ \\ n", 1, 2, 3, ..., n_values]
-        header = ["x₀ \\ n", string.(n_values)...]  # Header mit n-Werten
-        # Tabelle mit PrettyTables drucken
-        pretty_table(table_data, header = header, title = "Konvergenz der Heron-Folge für S = $(S)")
+        header = ["x₀", string.(n_values)...]  # z.B. ["x₀", "1", "2", "3", "5", "10"]
+        pretty_table(table_data; header = (header,), title = "Konvergenz der Folge für S = $(S)")
     end
 
     # Beispielwerte für x0 und n
