@@ -1,5 +1,6 @@
 using Printf
 using Plots
+using PrettyTables
 
 function aufg01()
     function norm_1(A::AbstractMatrix)
@@ -36,6 +37,47 @@ function aufg01()
         @printf("%2d │ %10.6f │ %10.6f │ %10.6f\n", n, n1, ninf, nfrob)
     end
 end
+
+function aufg02(S)
+    # Berechnung des n-ten Folgengliedes
+    function nth_elem(x0, S, n)
+        x = x0
+        for i in 1:n
+            x = 0.5 * (x + S / x)
+        end
+        return x
+    end
+
+    # Funktion zur Konvergenzanalyse
+    function teste_konvergenz(S::Float64, x0_values::Vector{Float64}, n_values::Vector{Int})
+        table_data = []  # Leere Liste für die Tabellendaten
+    
+        for x0 in x0_values
+            row = [@sprintf("%.4f", x0)]  # Startwert x0 als String mit 4 Dezimalstellen
+            for n in n_values
+                xn = nth_elem(x0, S, n)  # Berechnung des n-ten Folgengliedes
+                fehler = abs(xn - sqrt(S))  # Fehlerberechnung
+                push!(row, @sprintf("%.6f", fehler))  # Fehler in der Zeile hinzufügen
+            end
+            push!(table_data, row)  # Zeile zur Tabelle hinzufügen
+        end
+
+        # Header zusammenstellen: ["x₀ \\ n", 1, 2, 3, ..., n_values]
+        header = ["x₀ \\ n", string.(n_values)...]  # Header mit n-Werten
+        # Tabelle mit PrettyTables drucken
+        pretty_table(table_data, header = header, title = "Konvergenz der Heron-Folge für S = $(S)")
+    end
+
+    # Beispielwerte für x0 und n
+    x0_values = [0.1, 0.5, 1.0, 2.0, 10.0]
+    n_values = [1, 2, 3, 5, 10]
+
+    # Aufruf der Funktion für S = 0.5
+    teste_konvergenz(S, x0_values, n_values)
+end
+
+
+
 
 function aufg03(N)
     h = 1 / (N + 1)  # Abstand zwischen den Punkten
