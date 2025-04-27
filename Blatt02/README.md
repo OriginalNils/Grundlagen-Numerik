@@ -1,5 +1,5 @@
 
-# README – Blatt 01 Numerik
+# README – Blatt 02 Numerik
 
 ## Aufgabe 01
 
@@ -39,7 +39,7 @@ Zu v): Die Ergebnisse der Interpolation von f(x)=sin⁡(exp⁡(x)) bmit Hilfe de
 2. Führen Sie folgenden Befehl aus, um den Code zu laden:
 
 ```
-include("blatt01.jl")
+include("blatt02.jl")
 ```
 3. Der Code der jeweiligen Aufgaben kann jeweils mit folgenden Befehl ausgeführt werden, wobei für x die jeweilige Aufgaben Nummer genutzt werden muss.
 ```
