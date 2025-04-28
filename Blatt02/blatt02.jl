@@ -198,3 +198,40 @@ function aufg02()
     pretty_table(table_data; header=header, title="Maximaler Fehler der Funktionen")
 
 end
+
+function aufg03()
+    function horner(a::Vector{Float64}, x0::Float64)
+        # Start mit dem höchsten Koeffizienten
+        b = a[end]
+        
+        # Iteriere rückwärts durch die Koeffizienten
+        for i in length(a)-1:-1:1
+            b = a[i] + b * x0
+        end
+        
+        return b
+    end
+    
+    
+    a = [1.0, 0.0, 0.0, 1234/1775, 0.0, 0.0, 0.0, 0.0, 23/1775, 0.0, 76/1775]
+
+    # Funktion zur Erstellung einer Wertetabelle
+    function create_value_table(func, coefficients, x_values)
+        table = zeros(Float64, length(x_values), 2)
+        for i in eachindex(x_values)  # Iterieren mit eachindex
+            x = x_values[i]
+            p_x = func(coefficients, x)
+            table[i, 1] = x    # x-Wert in die erste Spalte
+            table[i, 2] = p_x  # Funktionswert p(x) in die zweite Spalte
+        end
+        return table
+    end
+
+    # Werte von x, für die das Polynom ausgewertet wird
+    x_values = -2:0.5:2  # z.B. Werte von -2 bis 2 in Schritten von 0.5
+
+    # Wertetabelle erstellen
+    table_data = create_value_table(horner, a, x_values)
+    header = ["x", "p(x)"]
+    pretty_table(table_data; header=header, title="Auswertung der Funktion p(x)")
+end
