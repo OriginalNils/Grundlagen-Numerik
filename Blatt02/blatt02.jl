@@ -2,6 +2,7 @@ using Printf
 using PrettyTables
 using LinearAlgebra
 using Statistics
+using Polynomials
 using BenchmarkTools
 
 function aufg01()
@@ -82,7 +83,6 @@ function aufg01()
             table_data[i, 2] = avg_time
             table_data[i, 3] = kappa
         end
-    
         header = ["N", "avg_time (s)", "κ (cond_1)"]
         pretty_table(table_data; header=header, formatters=ft_printf("%.4e", 2:3), title="Interpolation von f(x) = sin(exp(x))")
     end
@@ -94,5 +94,107 @@ function aufg01()
     test_determinanten_pretty()
     test_interpolation_zeiten(collect(2:10), 10)
     
+end
+
+function aufg02()
+    # Definiere die Funktionen f, g, h
+    f(x) = abs(x)
+    g(x) = abs(sin(5 * x))^3
+    h(x) = exp(-x^2)
+
+    # Lagrange-Interpolationspolynom
+    function bary_gewichte(xs)
+        N = length(xs) - 1  # Anzahl der Stützpunkte
+        ws = zeros(Float64, N+1)  # Array für die Gewichte
+
+        for i in 0:N
+            ws[i+1] = 1.0
+            for j in 0:N
+                if j != i
+                    ws[i+1] *= (xs[i+1] - xs[j+1])  # Produkt für jedes i
+                end
+            end
+            ws[i+1] = 1.0 / ws[i+1]  # Inverses Produkt für das Gewicht
+        end
+        return ws
+    end
+
+    function bary_polynome(xs, ys)
+        ws = bary_gewichte(xs)  # Baryzentrische Gewichte berechnen
+        N = length(xs) - 1  # Anzahl der Stützpunkte
+
+        # Funktion p(x) zurückgeben
+        function p(x)
+            # Falls x genau ein Stützpunkt ist, direkt Wert liefern
+            for (i, xi) in enumerate(xs)
+                if isapprox(x, xi; atol=1e-14)
+                    return ys[i]
+                end
+            end
+
+            # Ansonsten die baryzentrische Formel verwenden
+            numerator = 0.0
+            denominator = 0.0
+            for j in 0:N
+                diff = x - xs[j+1]
+                temp = ws[j+1] / diff
+                numerator += temp * ys[j+1]
+                denominator += temp
+            end
+            return numerator / denominator
+        end
+
+        return p
+    end
+
+    # Berechnung der Supremumsnorm
+    function supremum_norm(f, p, xs)
+        errors = abs.(f.(xs) .- p.(xs))
+        return maximum(errors)
+    end
+
+    # Durchführen des Konvergenztests für die Funktion
+    function konvergenztest(f, xs, xeval, max_order=10)
+        norms = Float64[]
+
+        for N in 1:max_order
+            # Wähle N Stützpunkte
+            stützpunkte = LinRange(xs[1], xs[end], N + 1)  # Erstelle N Stützpunkte
+            ys = f.(stützpunkte)
+            
+            # Interpolation durchführen
+            p = bary_polynome(stützpunkte, ys)
+            
+            # Supremumsnorm berechnen
+            norm = supremum_norm(f, p, xeval)
+            push!(norms, norm)
+        end
+
+        return norms
+    end
+
+    # Test für die Funktionen f, g, h durchführen
+    N = 50
+    M = 100
+    xs = LinRange(-1, 1, N + 2)
+    xeval = LinRange(-1, 1, M + 2)
+    max_order = 10
+
+    # Konvergenztest für jede Funktion durchführen
+    norm_f = konvergenztest(f, xs, xeval, max_order)
+    norm_g = konvergenztest(g, xs, xeval,max_order)
+    norm_h = konvergenztest(h, xs, xeval,max_order)
+
+    table_data = zeros(Float64, max_order, 4)
+
+    for i in 1:max_order
+        table_data[i, 1] = i
+        table_data[i, 2] = norm_f[i]
+        table_data[i, 3] = norm_g[i]
+        table_data[i, 4] = norm_h[i]
+    end
+
+    header = ["N", "f Supremumsnorm", "g Supremumsnorm", "h Supremumsnorm"]
+    pretty_table(table_data; header=header, title="Maximaler Fehler der Funktionen")
 
 end
