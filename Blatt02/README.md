@@ -17,7 +17,7 @@ Keine Variablen müssen beim Ausführen übergeben werden. Eine Tabelle mit den 
 
 ## Aufgabe 03
 
-**Zu ii):** Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
+**Zu i):** Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
 
 Gegeben ist das Polynom $p(x)$ der Form: $p(x) = \sum_{i=0}^{n} a_i x^i$
 
