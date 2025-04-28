@@ -23,7 +23,7 @@ Gegeben ist das Polynom $p(x)$ der Form: $p(x) = \sum_{i=0}^{n} a_i x^i$
 
 Das **Horner-Schema** berechnet den Funktionswert eines Polynoms an einem Punkt $x_0$ rekursiv. Die rekursive Berechnung erfolgt wie folgt:
 
-1. Setze den letzten Wert $ b_n = a_n $.
+1. Setze den letzten Wert $b_n = a_n$.
 2. Für $i = n-1, n-2, \dots, 0$ berechne: $b_i = a_i + b_{i+1} \cdot x_0$
 
 Das Horner-Schema entwickelt sich also zu einer verschachtelten Form des Polynoms:
@@ -33,8 +33,6 @@ $p(x_0) = a_0 + x_0 \left( a_1 + x_0 \left( a_2 + \dots + x_0 \left( a_{n-1} + x
 Die rekursive Berechnung endet mit dem Wert $b_0$, der gleich dem Wert des Polynoms $p(x_0)$ ist. Daher gilt:
 
 $p(x_0) = b_0$
-
----
 
 Zu ii) Warum ist das Horner-Schema numerisch weniger anfällig für Fehler?
 
