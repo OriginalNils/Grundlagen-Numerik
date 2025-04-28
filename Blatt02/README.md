@@ -3,9 +3,9 @@
 
 ## Aufgabe 01
 
-Zu iv): Bei kleinen Gittergrößen (N ≤ 5) stimmen analytische und numerische Determinanten nahezu exakt überein. Ab etwa N = 6 wächst der Fehler jedoch schnell an. Dieses Verhalten erklärt sich durch die schlechte Konditionierung der Vandermonde-Matrix, die bei zunehmender Gitterpunktanzahl numerische Instabilitäten verursacht. Besonders bei großen N entstehen erhebliche Abweichungen, die den praktischen Einsatz der Vandermonde-Matrix für hohe Dimensionen problematisch machen.
+**Zu iv):** Bei kleinen Gittergrößen ($N ≤ 5$) stimmen analytische und numerische Determinanten nahezu exakt überein. Ab etwa $N = 6$ wächst der Fehler jedoch schnell an. Dieses Verhalten erklärt sich durch die schlechte Konditionierung der Vandermonde-Matrix, die bei zunehmender Gitterpunktanzahl numerische Instabilitäten verursacht. Besonders bei großen N entstehen erhebliche Abweichungen, die den praktischen Einsatz der Vandermonde-Matrix für hohe Dimensionen problematisch machen.
 
-Zu v): Die Ergebnisse der Interpolation von f(x)=sin⁡(exp⁡(x)) bmit Hilfe der Vandermonde-Matrix zeigen eine moderate Zunahme der Berechnungszeit mit steigender Anzahl an Gitterpunkten N, wobei die durchschnittliche Zeit in den Mikrosekundenbereich wächst. Besonders auffällig ist jedoch die exponentielle Zunahme der Konditionszahl κ, die für kleine Gittergrößen noch moderat bleibt, aber ab N=4 deutlich ansteigt. Für N=10 erreicht die Konditionszahl bereits Werte im Bereich von 10^11, was auf eine zunehmende numerische Instabilität hinweist. Eine hohe Konditionszahl deutet darauf hin, dass die Matrix schlecht konditioniert ist, was zu fehlerhaften Berechnungen führen kann. Insgesamt lässt sich feststellen, dass für größere Gitterpunktzahlen die numerische Genauigkeit leidet, was die praktische Anwendung der Vandermonde-Interpolation einschränkt. Um diese Instabilität zu vermeiden, könnten kleinere Gittergrößen verwendet oder alternative Interpolationsmethoden wie Splines oder Lagrange-Interpolation in Betracht gezogen werden.
+**Zu v):** Die Ergebnisse der Interpolation von $f(x)=sin⁡(exp⁡(x))$ bmit Hilfe der Vandermonde-Matrix zeigen eine moderate Zunahme der Berechnungszeit mit steigender Anzahl an Gitterpunkten $N$, wobei die durchschnittliche Zeit in den Mikrosekundenbereich wächst. Besonders auffällig ist jedoch die exponentielle Zunahme der Konditionszahl κ, die für kleine Gittergrößen noch moderat bleibt, aber ab $N=4$ deutlich ansteigt. Für $N=10$ erreicht die Konditionszahl bereits Werte im Bereich von $10^11$, was auf eine zunehmende numerische Instabilität hinweist. Eine hohe Konditionszahl deutet darauf hin, dass die Matrix schlecht konditioniert ist, was zu fehlerhaften Berechnungen führen kann. Insgesamt lässt sich feststellen, dass für größere Gitterpunktzahlen die numerische Genauigkeit leidet, was die praktische Anwendung der Vandermonde-Interpolation einschränkt. Um diese Instabilität zu vermeiden, könnten kleinere Gittergrößen verwendet oder alternative Interpolationsmethoden wie Splines oder Lagrange-Interpolation in Betracht gezogen werden.
 
 ---
 
@@ -17,7 +17,7 @@ Keine Variablen müssen beim Ausführen übergeben werden. Eine Tabelle mit den 
 
 ## Aufgabe 03
 
-Zu ii): Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
+**Zu ii):** Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
 
 Gegeben ist das Polynom $p(x)$ der Form: $p(x) = \sum_{i=0}^{n} a_i x^i$
 
@@ -34,7 +34,7 @@ Die rekursive Berechnung endet mit dem Wert $b_0$, der gleich dem Wert des Polyn
 
 $p(x_0) = b_0$
 
-Zu ii): Das Horner-Schema ist numerisch stabiler als die direkte Berechnung des Polynoms aus der allgemeinen Form $p(x) = \sum_{i=0}^{n} a_i x^i$. Dies ist aus folgenden Gründen der Fall:
+**Zu ii):** Das Horner-Schema ist numerisch stabiler als die direkte Berechnung des Polynoms aus der allgemeinen Form $p(x) = \sum_{i=0}^{n} a_i x^i$. Dies ist aus folgenden Gründen der Fall:
 
 1. Weniger Operationen: Beim direkten Berechnen des Polynoms müssen alle Terme $a_i x^i$ separat berechnet werden, was zu großen oder kleinen Zwischenergebnissen führen kann, insbesondere bei großen Exponenten. Diese großen Zahlen können zu numerischen Instabilitäten und Präzisionsverlust führen. Das Horner-Schema führt die Berechnungen schrittweise durch und verwendet dabei weniger multiplikative Operationen, wodurch der Fehler reduziert wird.
 
