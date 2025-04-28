@@ -11,7 +11,7 @@ Zu v): Die Ergebnisse der Interpolation von f(x)=sin⁡(exp⁡(x)) bmit Hilfe de
 
 ## Aufgabe 02
 
-
+Keine Variablen müssen beim Ausführen übergeben werden. Eine Tabelle mit den Supremumsnormen wird ausgegeben.
 
 ---
 
