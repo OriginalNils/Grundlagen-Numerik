@@ -17,7 +17,7 @@ Keine Variablen müssen beim Ausführen übergeben werden. Eine Tabelle mit den 
 
 ## Aufgabe 03
 
-Zu ii):Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
+Zu ii): Beweis, dass das Polynom als $p(x_0) = b_0$ geschrieben werden kann
 
 Gegeben ist das Polynom $p(x)$ der Form: $p(x) = \sum_{i=0}^{n} a_i x^i$
 
@@ -34,17 +34,15 @@ Die rekursive Berechnung endet mit dem Wert $b_0$, der gleich dem Wert des Polyn
 
 $p(x_0) = b_0$
 
-Zu ii) Warum ist das Horner-Schema numerisch weniger anfällig für Fehler?
+Zu ii): Das Horner-Schema ist numerisch stabiler als die direkte Berechnung des Polynoms aus der allgemeinen Form $p(x) = \sum_{i=0}^{n} a_i x^i$. Dies ist aus folgenden Gründen der Fall:
 
-Das **Horner-Schema** ist numerisch stabiler als die direkte Berechnung des Polynoms aus der allgemeinen Form $ p(x) = \sum_{i=0}^{n} a_i x^i $. Dies ist aus folgenden Gründen der Fall:
+1. Weniger Operationen: Beim direkten Berechnen des Polynoms müssen alle Terme $a_i x^i$ separat berechnet werden, was zu großen oder kleinen Zwischenergebnissen führen kann, insbesondere bei großen Exponenten. Diese großen Zahlen können zu numerischen Instabilitäten und Präzisionsverlust führen. Das Horner-Schema führt die Berechnungen schrittweise durch und verwendet dabei weniger multiplikative Operationen, wodurch der Fehler reduziert wird.
 
-1. **Weniger Operationen:** Beim direkten Berechnen des Polynoms müssen alle Terme $ a_i x^i $ separat berechnet werden, was zu großen oder kleinen Zwischenergebnissen führen kann, insbesondere bei großen Exponenten. Diese großen Zahlen können zu **numerischen Instabilitäten** und **Präzisionsverlust** führen. Das Horner-Schema führt die Berechnungen schrittweise durch und verwendet dabei weniger multiplikative Operationen, wodurch der Fehler reduziert wird.
+2. Kontrollierte Exponenten: Bei der direkten Berechnung des Polynoms kann es zu exponentiellen Fehlern kommen, insbesondere bei großen Exponenten. Im Horner-Schema wird das Polynom schrittweise berechnet, wobei die Exponenten kontrolliert und nacheinander erhöht werden. Dies verhindert große numerische Fehler.
 
-2. **Kontrollierte Exponenten:** Bei der direkten Berechnung des Polynoms kann es zu exponentiellen Fehlern kommen, insbesondere bei großen Exponenten. Im Horner-Schema wird das Polynom schrittweise berechnet, wobei die Exponenten kontrolliert und nacheinander erhöht werden. Dies verhindert große numerische Fehler.
+3. Vermeidung von Zwischenwerten: Das Horner-Schema minimiert die Anzahl der Zwischenberechnungen, die zu sehr großen oder sehr kleinen Zahlen führen könnten. Da die Berechnungen aufeinanderfolgend und in kleineren Schritten erfolgen, ist das Risiko von Überläufen oder Präzisionsverlusten geringer.
 
-3. **Vermeidung von Zwischenwerten:** Das Horner-Schema minimiert die Anzahl der Zwischenberechnungen, die zu sehr großen oder sehr kleinen Zahlen führen könnten. Da die Berechnungen aufeinanderfolgend und in kleineren Schritten erfolgen, ist das Risiko von Überläufen oder **Präzisionsverlusten** geringer.
-
-Durch diese Eigenschaften ist das Horner-Schema besonders für die numerische Auswertung von Polynomen geeignet und bietet **mehr Präzision** und **weniger Fehler** bei der Berechnung.
+Durch diese Eigenschaften ist das Horner-Schema besonders für die numerische Auswertung von Polynomen geeignet und bietet mehr Präzision und weniger Fehler bei der Berechnung.
 
 ---
 
