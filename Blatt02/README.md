@@ -51,7 +51,6 @@ Durch diese Eigenschaften ist das Horner-Schema besonders für die numerische Au
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
   - `Printf` (für formatierte Ausgaben)
-  - `Plots` (für Diagramme)
   - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
 
