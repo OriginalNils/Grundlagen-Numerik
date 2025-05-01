@@ -11,16 +11,16 @@ function aufg01()
     f(x) = sin(exp(x))
 
     # Funktion zur Erstellung der Vandermonde-Matrix
-    function vandermonde(x::Vector{T}) where T
+    function vandermonde(x::Vector{Float64})
         n = length(x)
         V = [x[i]^(j-1) for i in 1:n, j in 1:n]
         return V
-    end
+    end    
 
     # Funktion zur Berechnung der Determinante der Vandermonde-Matrix
-    function vandermonde_determinant(x::Vector{T}) where T
+    function vandermonde_determinant(x::Vector{Float64})
         n = length(x)
-        det = one(T)
+        det = one(Float64)
         for i in 1:n-1
             for j in i+1:n
                 det *= (x[j] - x[i])
@@ -87,10 +87,6 @@ function aufg01()
         pretty_table(table_data; header=header, formatters=ft_printf("%.4e", 2:3), title="Interpolation von f(x) = sin(exp(x))")
     end
 
-    x = [1, 4, 19, 22]
-    V = vandermonde(x)
-    println(V)
-    println("Determinante: ", vandermonde_determinant(x))
     test_determinanten_pretty()
     test_interpolation_zeiten(collect(2:10), 10)
     
