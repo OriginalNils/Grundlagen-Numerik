@@ -14,7 +14,7 @@ $$
 
 Die Determinante dieser Matrix ist: $\text{det}(V) = (1)(x_2) - (1)(x_1) = x_2 - x_1$ Dies entspricht dem Produkt: $\prod_{1 \leq i < j \leq 2} (x_i - x_j) = (x_2 - x_1)$ Der Basisfall ist also erfüllt.
 
-Induktionsschritt: Nun zeigen wir, dass die Formel auch für $n = k + 1$ gilt. Die $(k+1) \times (k+1)$-Vandermonde-Matrix %V_{k+1}$ ist:
+Induktionsschritt: Nun zeigen wir, dass die Formel auch für $n = k + 1$ gilt. Die $(k+1) \times (k+1)$-Vandermonde-Matrix $V_{k+1}$ ist:
 
 $$
 V_{k+1} = \begin{pmatrix}
