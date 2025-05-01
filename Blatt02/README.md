@@ -77,7 +77,9 @@ Durch diese Eigenschaften ist das Horner-Schema besonders für die numerische Au
   - `Printf` (für formatierte Ausgaben)
   - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
-
+  - `Statistics` (Durchschnitt berechnen)
+  - `BenchmarkTools` (Zeitmessung)
+  
 ---
 
 ## Ausführung

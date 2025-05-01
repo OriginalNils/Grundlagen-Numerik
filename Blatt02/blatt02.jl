@@ -2,7 +2,6 @@ using Printf
 using PrettyTables
 using LinearAlgebra
 using Statistics
-using Polynomials
 using BenchmarkTools
 
 function aufg01()
