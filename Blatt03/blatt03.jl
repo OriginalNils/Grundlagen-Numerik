@@ -114,4 +114,8 @@ function aufg02(N, M; output_folder="output")
     println("Spline-Plot und Fehlerplot gespeichert in $output_folder.")
 end
 
-
+function aufg03()
+    function diskretisiere(N)
+        return collect(range(-1, 1, length=N+1))
+    end
+end
