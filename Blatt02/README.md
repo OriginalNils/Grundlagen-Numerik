@@ -1,5 +1,6 @@
 
-# README – Blatt 02 Numerik
+# README – Blatt 02 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
+
 
 ## Aufgabe 01
 
