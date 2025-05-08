@@ -26,11 +26,9 @@ Das aktuelle Vorgehen im Code, insbesondere die Verwendung der polynomialen Inte
 
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
-  - `Printf` (für formatierte Ausgaben)
   - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
-  - `Statistics` (Durchschnitt berechnen)
-  - `BenchmarkTools` (Zeitmessung)
+  - `Plots` (Für Plots)
   
 ---
 
@@ -38,12 +36,8 @@ Das aktuelle Vorgehen im Code, insbesondere die Verwendung der polynomialen Inte
 
 1. Öffnen Sie ein **Julia-REPL** mit Version **1.11.5**.
 
-2. Führen Sie folgenden Befehl aus, um den Code zu laden:
+2. Führen Sie folgenden Befehl aus, um den Code zu laden und auszuführen. Wobei jeweils `x` mit der jeweiligen Aufgaben Nummer ersetzt werden muss:
 
 ```
-include("blatt03.jl")
-```
-3. Der Code der jeweiligen Aufgaben kann jeweils mit folgenden Befehl ausgeführt werden, wobei für x die jeweilige Aufgaben Nummer genutzt werden muss.
-```
-aufg0x()
+include("aufg0x.jl")
 ```
