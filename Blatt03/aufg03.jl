@@ -24,9 +24,9 @@ function integriere_polynom(a, b, koeffs)
     return s
 end
 
-f(x) = (1 - x)^3 * (1 + x)
-g(x) = sin(π * x)
-h(x) = abs(x)
+f3(x) = (1 - x)^3 * (1 + x)
+g3(x) = sin(π * x)
+h3(x) = abs(x)
 
 # Test für verschiedene Werte von N
 Ns = [5, 10, 20, 50, 100]  # Verschiedene Gitterpunktzahlen
@@ -39,28 +39,28 @@ for (i,N) in enumerate(Ns)
     table_data[i, 1] = N
     # Funktion f1
     x = diskretisiere(-1, 1, N)
-    y = f.(x)
-    a_coeffs_f1 = finde_koeffizienten(x, y)
-    I_num_f1 = integriere_polynom(-1, 1, a_coeffs_f1)
-    fehler_f1 = abs(I_num_f1 - I_exact_f)
-    table_data[i, 3] = I_num_f1
-    table_data[i, 4] = fehler_f1
-    
-    # Funktion f2
-    y = g.(x)
-    a_coeffs_f2 = finde_koeffizienten(x, y)
-    I_num_f2 = integriere_polynom(-1, 1, a_coeffs_f2)
-    fehler_f2 = abs(I_num_f2 - I_exact_g)
-    table_data[i, 6] = I_num_f2
-    table_data[i, 7] = fehler_f2
-    
-    # Funktion f3
-    y = h.(x)
+    y = f3.(x)
     a_coeffs_f3 = finde_koeffizienten(x, y)
     I_num_f3 = integriere_polynom(-1, 1, a_coeffs_f3)
-    fehler_f3 = abs(I_num_f3 - I_exact_h)
-    table_data[i, 9] = I_num_f3
-    table_data[i, 10] = fehler_f3
+    fehler_f3 = abs(I_num_f3 - table_data[i, 2])
+    table_data[i, 3] = I_num_f3
+    table_data[i, 4] = fehler_f3
+    
+    # Funktion f2
+    y = g3.(x)
+    a_coeffs_g3 = finde_koeffizienten(x, y)
+    I_num_g3 = integriere_polynom(-1, 1, a_coeffs_g3)
+    fehler_g3 = abs(I_num_g3 - table_data[i, 5])
+    table_data[i, 6] = I_num_g3
+    table_data[i, 7] = fehler_g3
+    
+    # Funktion f3
+    y = h3.(x)
+    a_coeffs_h3 = finde_koeffizienten(x, y)
+    I_num_h3 = integriere_polynom(-1, 1, a_coeffs_h3)
+    fehler_h3 = abs(I_num_h3 - table_data[i, 8])
+    table_data[i, 9] = I_num_h3
+    table_data[i, 10] = fehler_h3
 end
 
 header = ["N", "f Exakt","f Numerisch", "f Fehler","g Exakt" ,"g Numerisch", "g Fehler","h Exakt", "h Numerisch", "h Fehler"]

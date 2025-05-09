@@ -28,11 +28,9 @@ function lagrange_local(x_nodes, f_nodes, x_eval)
 end
 
 # Hauptfunktion zum Plotten
-function plot_stueckweise_interpolation(N, M, m; output_folder="output")
+function plot_stueckweise_interpolation(N, M, m)
     x_grid = collect(diskretisiere(N, M))
     f_grid = runge.(x_grid)
-
-    isdir(output_folder) || mkpath(output_folder)
 
     # Plot 1: Mit Runge-Funktion    
     plt1 = plot(runge, -1, 1, label="Runge-Funktion", lw=2)
