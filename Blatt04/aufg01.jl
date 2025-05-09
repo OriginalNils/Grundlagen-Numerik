@@ -82,5 +82,5 @@ function run_spline_interpolation(f, label, length)
 end
 
 # Beispielplots
-run_spline_interpolation(x -> sin(2π*x), "sin(2πx)", 50)
-run_spline_interpolation(x -> cos(exp(x)), "cos(exp(x))",50)
+run_spline_interpolation(x -> sin(2π*x), "sin(2πx)", 25)
+run_spline_interpolation(x -> cos(exp(x)), "cos(exp(x))",25)
