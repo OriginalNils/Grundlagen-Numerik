@@ -10,13 +10,13 @@ Die Plots zeigen, dass die kubische Spline-Interpolation bei der Funktion cos(ex
 
 ## Aufgabe 02
 
-
+Nichts zu übergeben.
 
 ---
 
 ## Aufgabe 03
 
-
+Das entwickelte Verfahren zur Bestimmung der Nullstellen der Legendrepolynome mittels der Bisektionsmethode ist stabil und garantiert eine Nullstellenbestimmung, da es auf dem Zwischenwertsatz basiert. Es ist für kleinere Polynomgrade und moderate Genauigkeit effizient, aber aufgrund der linearen Konvergenz relativ langsam, insbesondere bei hohen Polynomgraden oder sehr kleinen Toleranzen. Die Methode benötigt viele Iterationen, was sie bei größeren n oder hohen Präzisionsanforderungen ineffizient macht. Insgesamt ist die Bisektionsmethode für einfache Aufgaben geeignet, aber für komplexere Anwendungen mit größeren Polynomgraden oder strengen Genauigkeitsanforderungen sind effizientere Methoden zu bevorzugen.
 
 ---
 
