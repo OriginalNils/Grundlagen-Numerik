@@ -4,7 +4,7 @@
 
 ## Aufgabe 01
 
-
+Zahl: 1051
 
 ---
 
@@ -27,7 +27,7 @@
   - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
   - `Plots` (für Plots)
-  - `Random`
+  - `DelimitedFiles` (einlesen von Dateien)
   
 ---
 
