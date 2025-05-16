@@ -26,7 +26,8 @@ Das entwickelte Verfahren zur Bestimmung der Nullstellen der Legendrepolynome mi
 - Standard-Bibliotheken:
   - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
-  - `Plots` (Für Plots)
+  - `Plots` (für Plots)
+  - `Random`
   
 ---
 
