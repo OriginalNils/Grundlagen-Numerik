@@ -4,13 +4,13 @@
 
 ## Aufgabe 01
 
-Zahl: 1051
+Zahl: 1453
 
 ---
 
 ## Aufgabe 02
 
-
+Zahl: 1459
 
 ---
 
