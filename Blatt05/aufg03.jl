@@ -15,7 +15,7 @@ function DFT(fx)
 end
 
 # Anzahl der Punkte
-N = 64
+N = 128
 x = range(-π, π, length=N+1)[1:end-1]  # äquidistante, periodische Punkte
 
 # (i) Harm. Funktion f(x) = sin(3x)

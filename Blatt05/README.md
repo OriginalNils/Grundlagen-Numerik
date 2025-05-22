@@ -4,19 +4,19 @@
 
 ## Aufgabe 01
 
-Zahl: 1453
+Interpolierte Werte in data_linear_sol.txt. Zahl: 1453
 
 ---
 
 ## Aufgabe 02
 
-Zahl: 1489
+Interpolierte Werte in data_cubic_clamped_sol.txt. Zahl: 1489
 
 ---
 
 ## Aufgabe 03
 
-
+Keine Übergabe nötig.
 
 ---
 
@@ -24,7 +24,6 @@ Zahl: 1489
 
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
-  - `PrettyTables` (für Tabellen)
   - `LinearAlgebra` (für Determinanten)
   - `Plots` (für Plots)
   - `DelimitedFiles` (einlesen von Dateien)
