@@ -1,4 +1,5 @@
 using DelimitedFiles
+using LinearAlgebra
 
 # --- (i) Daten einlesen ---
 file = "Blatt05/data_cubic_clamped.txt"
@@ -7,82 +8,82 @@ t = data[:, 1]
 x = data[:, 2]
 y = data[:, 3]
 
-# Hilfsfunktion: Kubische Spline-Koeffizienten mit clamped Randbedingungen berechnen
-function cubic_spline_clamped(t, f)
+tmin = minimum(t)
+tmax = maximum(t)
+t_eval = range(tmin, stop=tmax, length=100)
+
+function cubic_spline_clamped(t, y_vals)
     n = length(t)
     h = diff(t)
+    d = zeros(n)
+    u = zeros(n-1)
+    l = zeros(n-1)
     b = zeros(n)
-    u = zeros(n)
-    v = zeros(n)
-    z = zeros(n)
 
-    # Aufbau des linearen Systems für zweite Ableitungen (M)
-    alpha = zeros(n)
-    # Randbedingungen: f'(t0) = 0 und f'(tn) = 0
-    alpha[1] = 3*( (f[2]-f[1])/h[1] - 0 )
-    alpha[n] = 3*( 0 - (f[n]-f[n-1])/h[n-1] )
-    for i in 2:n-1
-        alpha[i] = 3*( (f[i+1]-f[i])/h[i] - (f[i]-f[i-1])/h[i-1] )
+    for i in 1:n
+        if i == 1
+            l[1] = h[2]
+            d[1] = 3
+            b[1] = 0
+            continue
+        elseif i == n
+            d[n] = 3
+            b[n] = 0
+            break
+        elseif i == n-1
+            l[i] = 0
+            d[i] = 2*(h[i-1]+h[i])
+            u[i] = h[i-1]
+        else        
+            d[i] = 2*(h[i-1]+h[i])
+            l[i] = h[i+1]
+            u[i] = h[i-1]
+            b[i] = 3*(y_vals[i+1]-y_vals[i])*(h[i-1]/h[i]) + 3*(y_vals[i]-y_vals[i-1])*(h[i]/h[i-1])
+        end
     end
 
-    l = ones(n)
-    mu = zeros(n)
-    z = zeros(n)
+    A = Tridiagonal(l, d, u)
+    return A \ b
+end
 
-    # Vorwärtsdurchlauf
-    for i in 2:n-1
-        l[i] = 2*(t[i+1] - t[i-1]) - h[i-1]*mu[i-1]
-        mu[i] = h[i] / l[i]
-        z[i] = (alpha[i] - h[i-1]*z[i-1]) / l[i]
-    end
+function i_cubic_spline(t, y_vals, i)
+    sigma = cubic_spline_clamped(t, y_vals)
+    h = diff(t)
+    c0 = y_vals[i]
+    c1 = sigma[i]
+    c2 = (3*y_vals[i+1]-3*y_vals[i]-2*sigma[i]*h[i]-sigma[i+1]*h[i])/(h[i]^2)
+    c3 = (-2*y_vals[i+1]+2*y_vals[i]+sigma[i]*h[i]+sigma[i+1]*h[i])/(h[i]^3)
 
-    # Randbedingungen in l und z anpassen
-    l[1] = 2*h[1]
-    l[n] = 2*h[n-1]
-
-    # Rückwärtssubstitution
-    c = zeros(n)
-    b = zeros(n-1)
-    d = zeros(n-1)
-    a = f[1:end-1]
-
-    c[n] = z[n]
-    for j in (n-1):-1:1
-        c[j] = z[j] - mu[j]*c[j+1]
-        b[j] = (f[j+1]-f[j])/h[j] - h[j]*(c[j+1] + 2*c[j])/3
-        d[j] = (c[j+1] - c[j]) / (3*h[j])
-    end
-
-    return a, b, c[1:end-1], d, t
+    return x -> c0 + c1*(x - t[i]) + c2*(x-t[i])^2 + c3*(x-t[i])^3
 end
 
 # Funktion um Spline an Punkten auszuwerten
-function spline_eval(a,b,c,d,t_spline,x_spline)
-    n = length(a)
-    y = zeros(length(x_spline))
-    for (k, xx) in enumerate(x_spline)
-        # Intervall finden
-        i = searchsortedlast(t_spline, xx)
-        i = clamp(i,1,n)
-        dx = xx - t_spline[i]
-        y[k] = a[i] + b[i]*dx + c[i]*dx^2 + d[i]*dx^3
+function spline_eval(ti, vi, t_eval)
+    n = length(ti)
+    v_eval = similar(t_eval)
+    for (j, t_val) in pairs(t_eval)
+        # Intervall finden: ti[i] ≤ t_val ≤ ti[i+1]
+        i = findlast(i -> ti[i] ≤ t_val, 1:n-1)
+        if i === nothing
+            # vor erstem Punkt → konstant extrapolieren
+            v_eval[j] = vi[1]
+        elseif t_val > ti[end]
+            # nach letztem Punkt → konstant extrapolieren
+            v_eval[j] = vi[end]
+        else
+            cube_spl = i_cubic_spline(ti, vi, i)
+            v_eval[j] = cube_spl(t_val)
+        end
     end
-    return y
+    return v_eval
 end
 
-# --- (ii) Koeffizienten für x und y berechnen ---
-a_x, b_x, c_x, d_x, ts = cubic_spline_clamped(t, x)
-a_y, b_y, c_y, d_y, ts = cubic_spline_clamped(t, y)
 
-# Neue Stützstellen
-t_vals = range(minimum(t), maximum(t), length=100)
-
-# Werte ausrechnen
-x_vals = spline_eval(a_x, b_x, c_x, d_x, ts, t_vals)
-y_vals = spline_eval(a_y, b_y, c_y, d_y, ts, t_vals)
+x_vals = spline_eval(t,x,t_eval)
+y_vals = spline_eval(t,y,t_eval)
 
 # --- (iii) Ergebnis speichern ---
-result = [t_vals x_vals y_vals]
+result = [t_eval x_vals y_vals]
 output_file = "Blatt05/data_cubic_clamped_sol.txt"
 open(output_file, "w") do io
     write(io, "# t x y\n")
