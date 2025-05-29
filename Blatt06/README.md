@@ -1,5 +1,5 @@
 
-# README – Blatt 03 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
+# README – Blatt 06 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
 
 
 ## Aufgabe 01
@@ -10,14 +10,15 @@ Die Ergebnisse zeigen, dass sowohl die Simpson- als auch die Boole-Quadraturrege
 
 ## Aufgabe 02
 
-Die Linearisierung ist sinnvoll verwendbar für Anfangsauslenkungen bis ungefährt 22°.
+Die Linearisierung ist sinnvoll verwendbar für Anfangsauslenkungen bis ungefährt +-22°.
 
-Die Ergebnisse zeigen das Konvergenzverhalten der AGM-Methode im Vergleich zur numerischen Integration mittels Trapez- und Simpsonregel für verschiedene Anfangsauslenkungen φ_0. Bei kleinen Auslenkungen, etwa φ_0​=0,01, werden bereits mit wenigen Iterationen sehr geringe Fehler erreicht, was auf eine schnelle Annäherung an den Referenzwert hindeutet. Auch bei mittleren Auslenkungen, beispielsweise um φ_0 =0,9, nimmt der Fehler mit zunehmender Iterationszahl deutlich ab und erreicht ab etwa sechs Iterationen einen Wert im Bereich der numerischen Genauigkeit. Bei größeren Auslenkungen, insbesondere in der Nähe von π, steigt der Fehler zunächst an, verringert sich jedoch mit höheren Iterationszahlen ebenfalls deutlich. Auffällig ist, dass die Trapezregel bei großen Auslenkungen eine geringere Abweichung zur AGM-Methode zeigt als die Simpsonregel, bei der in einigen Fällen höhere Fehler auftreten. Insgesamt deuten die Ergebnisse darauf hin, dass die AGM-Methode mit einer geringen Anzahl an Iterationen eine hohe Genauigkeit liefert, wobei die Abweichung zwischen den Methoden bei großen Auslenkungen stärker ausgeprägt ist.
+Schon bei ungefährt 5 Iterationen des AGM ist der Fehler zwischen den Quadraturen und des AGM in nähe 10^-16, also sehr genau.
 
 ---
 
 ## Aufgabe 03
 
+Das numerische Verfahren zeigt bei kleinen Gitterpunktzahlen (für N<10) deutliche Abweichungen von der exakten Lösung, konvergiert aber mit zunehmender Verfeinerung des Gitters sichtbar gegen die analytische Lösung. Eine mögliche Verbesserung wäre der Einsatz eines Newton-Verfahrens für die Iteration, was die Konvergenzgeschwindigkeit erhöhen könnte.
 
 ---
 
@@ -25,7 +26,6 @@ Die Ergebnisse zeigen das Konvergenzverhalten der AGM-Methode im Vergleich zur n
 
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
-  - `LinearAlgebra` (für Determinanten)
   - `Plots` (für Plots)
   - `PrettyTables` (für Tabellen)
   
