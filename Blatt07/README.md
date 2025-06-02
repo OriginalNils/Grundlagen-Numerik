@@ -16,6 +16,7 @@ Nichts zu übergeben.
 
 ## Aufgabe 03
 
+Nichts zu übergeben.
 
 ---
 
@@ -24,7 +25,7 @@ Nichts zu übergeben.
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
   - `Plots` (für Plots)
-  - `PrettyTables` (für Tabellen)
+  - `LinearAlgebra`
   
 ---
 
