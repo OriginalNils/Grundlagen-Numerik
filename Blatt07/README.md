@@ -26,6 +26,7 @@ Nichts zu übergeben.
 - Standard-Bibliotheken:
   - `Plots` (für Plots)
   - `LinearAlgebra`
+  - `PrettyTables` (Tabellen)
   
 ---
 

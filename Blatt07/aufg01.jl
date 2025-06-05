@@ -23,8 +23,6 @@ end
 xk, wk = knoten_gewichte(gauß_matrix(3))
 header = ["Grad", "Exakt", "Approx", "Fehler"]
 table_data = zeros(Float64, 5, 4)
-println(xk)
-println(wk)
 
 for (i,k) in enumerate(0:2:8)
     approx = sum(wk .* xk.^k)
@@ -41,8 +39,6 @@ for (i,k) in enumerate(0:2:8)
     table_data[i, 3] = approx
     table_data[i, 4] = abs(exact - approx)
 end
-
-println(table_data[:,3])
 
 pretty_table(table_data;
     header=header,
