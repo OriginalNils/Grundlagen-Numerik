@@ -4,6 +4,7 @@
 
 ## Aufgabe 01
 
+Für x0 = 1 und x0 = 0 ist immer der nächste Wert entweder 0 oder 1, also schwingt zwischen diesen beiden Werten hin und her und kann damit gar nicht die Nullstelle erreichen. 
 
 ---
 
