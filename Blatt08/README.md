@@ -1,5 +1,5 @@
 
-# README – Blatt 07 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
+# README – Blatt 08 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
 
 
 ## Aufgabe 01
@@ -33,6 +33,7 @@ iv) Die implizite Mittelpunktsregel liefert über alle getesteten λ-Werte hinwe
   - `Plots` (für Plots)
   - `LinearAlgebra`
   - `PrettyTables` (Tabellen)
+  - `BenchmarkTools` (Zeitmessung)
   
 ---
 
