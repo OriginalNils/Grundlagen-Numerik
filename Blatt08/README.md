@@ -18,6 +18,11 @@ vi) Die Methode der Begleitmatrix setzt voraus, dass das Polynom in der Monombas
 
 ## Aufgabe 03
 
+ii) Die explizite Mittelpunktsregel liefert für kleine Werte von λ gute numerische Ergebnisse. Insbesondere bei λ=1 und λ=10 ist der maximale Fehler sehr gering und die Lösung stimmt gut mit der exakten Lösung überein. Bis etwa λ=50 bleibt der Fehler in einem noch akzeptablen Bereich. Ab λ=100 jedoch wächst der Fehler deutlich an, und für λ≥400 wird das Verfahren instabil – es kommt zur Divergenz der Lösung, was sich in unendlichen Fehlern äußert.
+
+iv) Die implizite Mittelpunktsregel liefert über alle getesteten λ-Werte hinweg stabile und genaue numerische Lösungen. Im Gegensatz zur expliziten Methode bleibt die Fehlergröße auch bei großen λ kontrolliert und es treten keine Instabilitäten auf. Für kleine λ ist der Fehler vergleichbar mit der expliziten Methode, während für große λ (z. B. λ≥400) die implizite Regel deutlich bessere Resultate liefert. Die Methode ist daher besonders für steife Probleme geeignet, bei denen explizite Verfahren versagen oder sehr kleine Zeitschritte benötigen würden. Die etwas höhere Rechenzeit durch die Newton-Iteration ist dabei gerechtfertigt, da sie zuverlässige Stabilität und Genauigkeit bietet.
+
+
 
 ---
 
