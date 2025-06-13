@@ -12,6 +12,7 @@ Die Tabelle zeigt, dass alle Methoden für kleine n nahezu identische Konditions
 
 ## Aufgabe 02
 
+Das direkte Lösen des linearen Gleichungssystems Kx=b mittels Gauß-Algorithmus oder Rückwärtssubstitution ist numerisch stabiler und deutlich effizienter als die Berechnung von x=K^-1b über die Matrixinversion. Die Inversionsmethode ist zeitlich deutlich aufwändiger und anfälliger für numerische Fehler, da die Berechnung der Inversen selbst fehleranfällig und rechenintensiv ist. Deshalb sollte man in der Praxis immer das Gleichungssystem direkt lösen, anstatt die Inverse zu verwenden.
 
 ---
 
