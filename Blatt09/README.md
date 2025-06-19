@@ -18,6 +18,9 @@ Das direkte Lösen des linearen Gleichungssystems Kx=b mittels Gauß-Algorithmus
 
 ## Aufgabe 03
 
+Zu v): Ich glaube 100 Iterationsschritte ist mehr als sinnfrei.
+
+Das Gradientenverfahren zeigt eine langsame, lineare Konvergenz mit einem Konvergenzfaktor nahe 1, der von Anfang an stabil bleibt. Das Newton-Verfahren hingegen startet mit größeren Schwankungen, konvergiert aber sehr schnell ab etwa α=10^−7 und erreicht eine viel geringere Fehlerdifferenz. Ab diesem Punkt nähert sich der Konvergenzfaktor dem des Gradientenverfahrens an, da beide Methoden nahe am Optimum nur noch kleine Schritte machen. Insgesamt ist Newton deutlich effizienter, benötigt aber die Berechnung der Hesse-Matrix und eine gute Startlösung.
 
 ---
 
