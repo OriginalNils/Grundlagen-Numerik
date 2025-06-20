@@ -1,5 +1,5 @@
 
-# README – Blatt 08 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
+# README – Blatt 10 Numerik Nils Döring (2783749) und Dominik Schwarzmeier (2784721)
 
 ## Aufgabe 01
 
@@ -23,7 +23,7 @@ Die Ergebnisse zeigen, dass die Fehler bei der Lösung des Gleichungssystems mit
 
 - Julia Version **1.11.5**
 - Standard-Bibliotheken:
-  - `Plots` (für Plots)
+  - `Random`
   - `LinearAlgebra`
   - `PrettyTables` (Tabellen)
   - `BenchmarkTools` (Zeitmessung)
